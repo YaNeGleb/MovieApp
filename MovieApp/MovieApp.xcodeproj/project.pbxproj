@@ -11,6 +11,11 @@
 		51CB80932C7C9F6B00DE421F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CB80922C7C9F6B00DE421F /* ContentView.swift */; };
 		51CB80952C7C9F6C00DE421F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CB80942C7C9F6C00DE421F /* Assets.xcassets */; };
 		51CB80982C7C9F6C00DE421F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51CB80972C7C9F6C00DE421F /* Preview Assets.xcassets */; };
+		51CB80A02C7C9FE500DE421F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 51CB809F2C7C9FE500DE421F /* ComposableArchitecture */; };
+		51CB80A32C7CA01C00DE421F /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 51CB80A22C7CA01C00DE421F /* Nuke */; };
+		51CB80A52C7CA01C00DE421F /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 51CB80A42C7CA01C00DE421F /* NukeExtensions */; };
+		51CB80A72C7CA01C00DE421F /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 51CB80A62C7CA01C00DE421F /* NukeUI */; };
+		51CB80A92C7CA01C00DE421F /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 51CB80A82C7CA01C00DE421F /* NukeVideo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51CB80A02C7C9FE500DE421F /* ComposableArchitecture in Frameworks */,
+				51CB80A32C7CA01C00DE421F /* Nuke in Frameworks */,
+				51CB80A92C7CA01C00DE421F /* NukeVideo in Frameworks */,
+				51CB80A52C7CA01C00DE421F /* NukeExtensions in Frameworks */,
+				51CB80A72C7CA01C00DE421F /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +93,13 @@
 			dependencies = (
 			);
 			name = MovieApp;
+			packageProductDependencies = (
+				51CB809F2C7C9FE500DE421F /* ComposableArchitecture */,
+				51CB80A22C7CA01C00DE421F /* Nuke */,
+				51CB80A42C7CA01C00DE421F /* NukeExtensions */,
+				51CB80A62C7CA01C00DE421F /* NukeUI */,
+				51CB80A82C7CA01C00DE421F /* NukeVideo */,
+			);
 			productName = MovieApp;
 			productReference = 51CB808D2C7C9F6B00DE421F /* MovieApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,10 @@
 				Base,
 			);
 			mainGroup = 51CB80842C7C9F6B00DE421F;
+			packageReferences = (
+				51CB809E2C7C9FE500DE421F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				51CB80A12C7CA01C00DE421F /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = 51CB808E2C7C9F6B00DE421F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -344,6 +365,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51CB809E2C7C9FE500DE421F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.13.1;
+			};
+		};
+		51CB80A12C7CA01C00DE421F /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke?tab=readme-ov-file";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51CB809F2C7C9FE500DE421F /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51CB809E2C7C9FE500DE421F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		51CB80A22C7CA01C00DE421F /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51CB80A12C7CA01C00DE421F /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		51CB80A42C7CA01C00DE421F /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51CB80A12C7CA01C00DE421F /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		51CB80A62C7CA01C00DE421F /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51CB80A12C7CA01C00DE421F /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		51CB80A82C7CA01C00DE421F /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51CB80A12C7CA01C00DE421F /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 51CB80852C7C9F6B00DE421F /* Project object */;
 }
