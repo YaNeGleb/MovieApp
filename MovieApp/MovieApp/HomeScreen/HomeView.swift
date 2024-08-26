@@ -40,12 +40,12 @@ struct HomeView: View {
                                 .overlay(
                                     DotIndicatorView(selectedPage: $store.currentPage,
                                                      pages: store.firstThreeMovies.count)
-                                        .padding(.bottom, 5), alignment: .bottom
+                                    .padding(.bottom, 5), alignment: .bottom
                                 )
                                 
                                 HStack(spacing: 15) {
                                     Button {
-
+                                        
                                     } label: {
                                         HStack {
                                             Image(systemName: "play.fill")
@@ -62,7 +62,7 @@ struct HomeView: View {
                                     }
                                     
                                     Button {
-
+                                        
                                     } label: {
                                         HStack {
                                             Image(systemName: "plus")
@@ -83,9 +83,8 @@ struct HomeView: View {
                                 
                                 LazyVStack(spacing: 10) {
                                     ForEach(Array(store.playlists.enumerated()), id: \.element.id) { playlistIndex, playlist in
-                                        let screenWidth = proxy.size.width
-                                        let cellWidth: CGFloat = (playlistIndex == 0 || (playlistIndex + 1) % 4 == 0) ? screenWidth / 1.6 : screenWidth / 3
-                                        let cellHeight: CGFloat = (playlistIndex == 0 || (playlistIndex + 1) % 4 == 0) ? cellWidth / 1.5 : cellWidth * 1.4
+                                        let (cellWidth, cellHeight) = calculateCellDimensions(for: playlistIndex, screenWidth: proxy.size.width)
+                                        
                                         VStack(alignment: .leading, spacing: 15) {
                                             HStack {
                                                 Text(playlist.type.title)
@@ -95,9 +94,7 @@ struct HomeView: View {
                                                 
                                                 Spacer()
                                                 
-                                                Button(action: {
-
-                                                }) {
+                                                Button(action: {}) {
                                                     Text("All")
                                                         .font(.system(size: 17)).bold()
                                                         .fontWeight(.regular)
@@ -113,7 +110,7 @@ struct HomeView: View {
                                                         Button(action: {
                                                             store.send(.navigation(.goToDetailScreen(movie)))
                                                         }) {
-                                                            if (playlistIndex == 0 || (playlistIndex + 1) % 4 == 0) {
+                                                            if isLargeCell(for: playlistIndex) {
                                                                 LargeMovieRow(movie: movie, width: cellWidth, height: cellHeight)
                                                             } else {
                                                                 MovieRow(movie: movie, width: cellWidth, height: cellHeight)
@@ -133,6 +130,7 @@ struct HomeView: View {
                                 }
                                 .padding(.top, 20)
                                 Spacer()
+                                
                             }
                             .padding(.top, 30)
                         }
@@ -147,7 +145,7 @@ struct HomeView: View {
                             Spacer()
                             
                             Button(action: {
-
+                                
                             }) {
                                 Image(systemName: "magnifyingglass")
                                     .imageScale(.large)
@@ -171,9 +169,19 @@ struct HomeView: View {
             }
         }
     }
+    
+    private func calculateCellDimensions(for index: Int, screenWidth: CGFloat) -> (CGFloat, CGFloat) {
+        let cellWidth: CGFloat = (index == 0 || (index + 1) % 4 == 0) ? screenWidth / 1.6 : screenWidth / 3
+        let cellHeight: CGFloat = (index == 0 || (index + 1) % 4 == 0) ? cellWidth / 1.5 : cellWidth * 1.4
+        return (cellWidth, cellHeight)
+    }
+    
+    private func isLargeCell(for index: Int) -> Bool {
+        return index == 0 || (index + 1) % 4 == 0
+    }
 }
 
-struct HomePostersView: View {
+private struct HomePostersView: View {
     let movieWithGenres: MovieWithGenres
     @State private var currentScale: CGFloat = 1.0
 
