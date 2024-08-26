@@ -22,11 +22,8 @@ struct DetailMovieFeature {
         var reviews: Review?
         var genres: [Genre]?
         var credits: Credits?
-        var selectedIndex: Int = 0
         var isLoading: Bool = false
         var isSaveMovie: Bool = false
-        var isShowFullScreenImage: Bool = false
-        var isShowingTrailer: Bool = false
     }
     
     enum Action: BindableAction {
@@ -72,7 +69,7 @@ struct DetailMovieFeature {
                 switch lifecycleAction {
                 case .onAppear:
                     let movieId = state.currentMovie.id
-                    var effects: [Effect<Action>] = [
+                    let effects: [Effect<Action>] = [
                         .send(.dataFetching(.fetchMovieDetails(movieId))),
                         .send(.dataFetching(.fetchStillsFromMovie(movieId))),
                         .send(.dataFetching(.fetchGenresForMovie(state.currentMovie.genreIDS))),

@@ -11,7 +11,7 @@ import NukeUI
 
 struct DetailMovieView: View {
     @Bindable var store: StoreOf<DetailMovieFeature>
-        
+    
     var body: some View {
         GeometryReader { proxy in
             let headerHeight: CGFloat = proxy.size.height * 0.7
@@ -76,7 +76,7 @@ struct DetailMovieView: View {
                                     }
                                     
                                     Button(action: {
-                                        store.isShowingTrailer.toggle()
+                                        
                                     }) {
                                         ZStack {
                                             Circle()
@@ -92,7 +92,7 @@ struct DetailMovieView: View {
                                     }
                                     
                                     Button(action: {
-                                        // need add action
+                                        
                                     }) {
                                         ZStack {
                                             Circle()
@@ -203,7 +203,7 @@ struct DetailMovieView: View {
                                         LazyHStack {
                                             ForEach(credits.prefix(20), id: \.id) { cast in
                                                 Button(action: {
-
+                                                    
                                                 }) {
                                                     CreditRow(cast: cast, width: 90, height: 120)
                                                 }
